@@ -36,8 +36,6 @@ else:
             self.preview_url = kwargs.pop('preview')
             self.preview_timeout = kwargs.pop('preview_timeout', None)
             self.hide_preview_button = kwargs.pop('hide_preview_button', False)
-
-            # Chỉ cung cấp template mặc định nếu không có
             kwargs.setdefault('template', 'pagedown.html')  # Cung cấp template mặc định nếu không có
             super(HeavyPreviewPageDownWidget, self).__init__(*args, **kwargs)
 
