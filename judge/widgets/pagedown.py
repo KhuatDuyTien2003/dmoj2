@@ -15,12 +15,13 @@ except ImportError:
     HeavyPreviewPageDownWidget = None
 else:
     class PagedownWidget(CompressorWidgetMixin, OldPagedownWidget):
-        compress_js = True
-
-        self.template = kwargs.pop('template', 'default_template.html')  # Cung cấp template mặc định nếu không có
-        kwargs.setdefault('css', ())
-        super(PagedownWidget, self).__init__(*args, **kwargs)
-
+        
+        def __init__(self, *args, **kwargs):  # Make sure kwargs is defined here
+            super().__init__(*args, **kwargs)
+            self.template = kwargs.pop('template', 'default_template.html')
+            compress_js = True
+            kwargs.setdefault('css', ())
+      
 
     class MathJaxPagedownWidget(PagedownWidget):
         class Media:
@@ -32,12 +33,13 @@ else:
 
 
     class HeavyPreviewPageDownWidget(PagedownWidget):
-        def __init__(self, *args, **kwargs):
+        def __init__(self, *args, **kwargs): 
+            super().__init__(*args, **kwargs)
             self.preview_url = kwargs.pop('preview')
             self.preview_timeout = kwargs.pop('preview_timeout', None)
             self.hide_preview_button = kwargs.pop('hide_preview_button', False)
-            kwargs.setdefault('template', 'pagedown.html')  # Cung cấp template mặc định nếu không có
-            super(HeavyPreviewPageDownWidget, self).__init__(*args, **kwargs)
+            kwargs.setdefault('template', 'pagedown.html')  
+            
 
         def render(self, name, value, attrs=None, renderer=None):
             if value is None:
