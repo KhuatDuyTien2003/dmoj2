@@ -337,15 +337,6 @@ ROOT_URLCONF = 'dmoj.urls'
 LOGIN_REDIRECT_URL = '/user'
 WSGI_APPLICATION = 'dmoj.wsgi.application'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-from jinja2 import select_autoescape
-
-DEFAULT_EXTENSIONS = [
-    'jinja2.ext.do',
-    'jinja2.ext.loopcontrols',
-    'jinja2.ext.i18n',
-]
-
-my_autoescape = select_autoescape(enabled_extensions=('html', 'xml'))
 
 TEMPLATES = [
     {
@@ -374,7 +365,8 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
-            'autoescape': my_autoescape,
+            # 'autoescape': select_autoescape(['html', 'xml']),
+           'autoescape': my_autoescape,
             'trim_blocks': True,
             'lstrip_blocks': True,
             'translation_engine': 'judge.utils.safe_translations',
@@ -383,23 +375,20 @@ TEMPLATES = [
                 'judge.jinja2.DMOJExtension',
                 'judge.jinja2.spaceless.SpacelessExtension',
             ],
-            # Optional: nếu có file environment.py
-            # 'environment': 'judge.jinja2.environment.environment',
         },
     },
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-        ],
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',  # ✅ OK
+        'APP_DIRS': True,  # ✅ OK
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # ✅ OK
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',  # ❗ BẠN THIẾU dòng này
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.media',
                 'django.template.context_processors.tz',
                 'django.template.context_processors.i18n',
-                'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
