@@ -633,4 +633,3 @@ if DMOJ_PDF_PDFOID_URL:
 # Compute these values after local_settings.py is loaded
 ACE_DEFAULT_LIGHT_THEME = DMOJ_THEME_DEFAULT_ACE_THEME['light']
 ACE_DEFAULT_DARK_THEME = DMOJ_THEME_DEFAULT_ACE_THEME['dark']
-django_heroku.settings(locals())
