@@ -15,14 +15,10 @@ except ImportError:
     HeavyPreviewPageDownWidget = None
 else:
     class PagedownWidget(CompressorWidgetMixin, OldPagedownWidget):
-        # The goal here is to compress all the pagedown JS into one file.
-        # We do not want any further compress down the chain, because
-        # 1. we'll create multiple large JS files to download.
-        # 2. this is not a problem here because all the pagedown JS files will be used together.
         compress_js = True
 
         def __init__(self, *args, **kwargs):
-            kwargs.setdefault('css', ())
+            kwargs.setdefault('css', ())  # Không sử dụng 'template' trong kwargs
             super(PagedownWidget, self).__init__(*args, **kwargs)
 
 
@@ -37,10 +33,10 @@ else:
 
     class HeavyPreviewPageDownWidget(PagedownWidget):
         def __init__(self, *args, **kwargs):
-            kwargs.setdefault('template', 'pagedown.html')
             self.preview_url = kwargs.pop('preview')
             self.preview_timeout = kwargs.pop('preview_timeout', None)
             self.hide_preview_button = kwargs.pop('hide_preview_button', False)
+            kwargs.setdefault('template', 'pagedown.html')  # Cung cấp template mặc định nếu không có
             super(HeavyPreviewPageDownWidget, self).__init__(*args, **kwargs)
 
         def render(self, name, value, attrs=None, renderer=None):
