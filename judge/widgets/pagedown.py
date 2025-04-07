@@ -17,9 +17,9 @@ else:
     class PagedownWidget(CompressorWidgetMixin, OldPagedownWidget):
         compress_js = True
 
-        def __init__(self, *args, **kwargs):
-            kwargs.setdefault('css', ())  # Không sử dụng 'template' trong kwargs
-            super(PagedownWidget, self).__init__(*args, **kwargs)
+        self.template = kwargs.pop('template', 'default_template.html')  # Cung cấp template mặc định nếu không có
+        kwargs.setdefault('css', ())
+        super(PagedownWidget, self).__init__(*args, **kwargs)
 
 
     class MathJaxPagedownWidget(PagedownWidget):
