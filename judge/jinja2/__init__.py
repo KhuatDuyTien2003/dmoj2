@@ -8,8 +8,76 @@ from statici18n.templatetags.statici18n import inlinei18n
 
 from judge.highlight_code import highlight_code
 from judge.user_translations import gettext
-from . import (camo, datetime, filesize, format, gravatar, language, markdown, rating, reference, render, social,
-               spaceless, submission, timedelta)
+try:
+    from . import camo
+except ImportError:
+    camo = None
+
+try:
+    from . import datetime
+except ImportError:
+    datetime = None
+
+try:
+    from . import filesize
+except ImportError:
+    filesize = None
+
+try:
+    from . import format
+except ImportError:
+    format = None
+
+try:
+    from . import gravatar
+except ImportError:
+    gravatar = None
+
+try:
+    from . import language
+except ImportError:
+    language = None
+
+try:
+    from . import markdown
+except ImportError:
+    markdown = None
+
+try:
+    from . import rating
+except ImportError:
+    rating = None
+
+try:
+    from . import reference
+except ImportError:
+    reference = None
+
+try:
+    from . import render
+except ImportError:
+    render = None
+
+try:
+    from . import social
+except ImportError:
+    social = None
+
+try:
+    from . import spaceless
+except ImportError:
+    spaceless = None
+
+try:
+    from . import submission
+except ImportError:
+    submission = None
+
+try:
+    from . import timedelta
+except ImportError:
+    timedelta = None
+
 from . import registry
 
 registry.function('str', str)

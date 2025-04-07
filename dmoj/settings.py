@@ -337,6 +337,15 @@ ROOT_URLCONF = 'dmoj.urls'
 LOGIN_REDIRECT_URL = '/user'
 WSGI_APPLICATION = 'dmoj.wsgi.application'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+from jinja2 import select_autoescape
+
+DEFAULT_EXTENSIONS = [
+    'jinja2.ext.do',
+    'jinja2.ext.loopcontrols',
+    'jinja2.ext.i18n',
+]
+
+my_autoescape = select_autoescape(enabled_extensions=('html', 'xml'))
 
 TEMPLATES = [
     {
@@ -365,8 +374,7 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
-            # 'autoescape': select_autoescape(['html', 'xml']),
-           'autoescape': my_autoescape,
+            'autoescape': my_autoescape,
             'trim_blocks': True,
             'lstrip_blocks': True,
             'translation_engine': 'judge.utils.safe_translations',
@@ -375,6 +383,8 @@ TEMPLATES = [
                 'judge.jinja2.DMOJExtension',
                 'judge.jinja2.spaceless.SpacelessExtension',
             ],
+            # Optional: nếu có file environment.py
+            # 'environment': 'judge.jinja2.environment.environment',
         },
     },
     {
