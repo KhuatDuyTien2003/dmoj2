@@ -256,7 +256,6 @@ class TwoFactorLoginForm(TOTPForm):
                 raise ValidationError(_('Invalid WebAuthn credential ID.'))
 
             user = credential.webauthn_user
-            # Work around a useless check in the webauthn package.
             user.credential_id = credential.cred_id
             assertion = webauthn.WebAuthnAssertionResponse(
                 webauthn_user=user,
