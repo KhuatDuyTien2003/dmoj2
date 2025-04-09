@@ -5,7 +5,8 @@ from typing import Optional
 from django.conf import settings
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
-from django.db.models.signals import post_delete, post_save
+from django.db.models.signals import post_delete, post_save,post_migrate
+
 from django.dispatch import receiver
 
 from .caching import finished_submission
