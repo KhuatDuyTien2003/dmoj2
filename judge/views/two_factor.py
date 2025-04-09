@@ -8,7 +8,7 @@ import qrcode
 import webauthn
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import SuccessURLAllowedHostsMixin
+from django.contrib.auth.mixins import SuccessURLAllowedHostsMixin
 from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.utils.translation import gettext as _, gettext_lazy
