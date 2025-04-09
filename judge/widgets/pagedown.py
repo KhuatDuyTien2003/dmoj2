@@ -32,13 +32,16 @@ else:
             ]
 
 
-    class HeavyPreviewPageDownWidget(PagedownWidget):
-        def __init__(self, *args, **kwargs): 
-            super().__init__(*args, **kwargs)
-            self.preview_url = kwargs.pop('preview')
-            self.preview_timeout = kwargs.pop('preview_timeout', None)
-            self.hide_preview_button = kwargs.pop('hide_preview_button', False)
-            kwargs.setdefault('template', 'pagedown.html')  
+class HeavyPreviewPageDownWidget(PagedownWidget):
+    def __init__(self, *args, **kwargs):
+        # Lấy các biến custom ra khỏi kwargs trước khi truyền kwargs vào super
+        self.preview_url = kwargs.pop('preview', None)
+        self.preview_timeout = kwargs.pop('preview_timeout', None)
+        self.hide_preview_button = kwargs.pop('hide_preview_button', False)
+        kwargs.setdefault('template', 'pagedown.html')  
+
+        # Gọi super với kwargs đã được làm sạch
+        super().__init__(*args, **kwargs)
             
 
         def render(self, name, value, attrs=None, renderer=None):
