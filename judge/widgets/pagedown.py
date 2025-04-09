@@ -34,15 +34,16 @@ else:
 
 class HeavyPreviewPageDownWidget(PagedownWidget):
     def __init__(self, *args, **kwargs):
-        # Lấy các biến custom ra khỏi kwargs trước khi truyền kwargs vào super
         self.preview_url = kwargs.pop('preview', None)
         self.preview_timeout = kwargs.pop('preview_timeout', None)
         self.hide_preview_button = kwargs.pop('hide_preview_button', False)
-        kwargs.setdefault('template', 'pagedown.html')  
-
-        # Gọi super với kwargs đã được làm sạch
+        
+        # Không truyền 'template' vào super().__init__()
         super().__init__(*args, **kwargs)
-            
+        
+        # Gán trực tiếp nếu muốn override template
+        self.template = 'pagedown.html'
+
 
         def render(self, name, value, attrs=None, renderer=None):
             if value is None:
