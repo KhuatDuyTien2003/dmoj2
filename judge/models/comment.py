@@ -10,13 +10,12 @@ from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
-
-from judge.models.contest import Contest
+from django.apps import apps
 from judge.models.interface import BlogPost
 from judge.models.problem import Problem, Solution
 from judge.models.profile import Profile
 from judge.utils.cachedict import CacheDict
-
+Contest = apps.get_model('judge', 'Contest')
 __all__ = ['Comment', 'CommentLock', 'CommentVote']
 
 comment_validator = RegexValidator(r'^[pcs]:[a-z0-9]+$|^b:\d+$',

@@ -4,6 +4,7 @@ from django.db import models, transaction
 from django.db.models import CASCADE, Q
 from django.urls import reverse
 from datetime import datetime, timezone
+from django.utils import timezone
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from jsonfield import JSONField
@@ -496,7 +497,7 @@ class ContestParticipation(models.Model):
     LIVE = 0
     SPECTATE = -1
 
-    contest = models.ForeignKey(Contest, verbose_name=_('associated contest'), related_name='users', on_delete=CASCADE)
+    contest = models.ForeignKey('judge.Contest', verbose_name=_('associated contest'), related_name='users', on_delete=CASCADE)
     user = models.ForeignKey(Profile, verbose_name=_('user'), related_name='contest_history', on_delete=CASCADE)
     real_start = models.DateTimeField(verbose_name=_('start time'), default=timezone.now, db_column='start')
     score = models.FloatField(verbose_name=_('score'), default=0, db_index=True)
