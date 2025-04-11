@@ -15,7 +15,12 @@ from judge.models.interface import BlogPost
 from judge.models.problem import Problem, Solution
 from judge.models.profile import Profile
 from judge.utils.cachedict import CacheDict
-Contest = apps.get_model('judge', 'Contest')
+from django.apps import apps
+
+def get_contest_model():
+    return apps.get_model('judge', 'Contest')
+Contest = get_contest_model()
+
 __all__ = ['Comment', 'CommentLock', 'CommentVote']
 
 comment_validator = RegexValidator(r'^[pcs]:[a-z0-9]+$|^b:\d+$',
