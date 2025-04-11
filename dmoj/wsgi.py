@@ -8,8 +8,11 @@ try:
     import MySQLdb  # noqa: F401, imported for side effect
 except ImportError:
     import pymysql
-
     pymysql.install_as_MySQLdb()
+
+# 💡 THÊM 2 DÒNG NÀY
+import django
+django.setup()
 
 # Import Django WSGI application
 from django.core.wsgi import get_wsgi_application
