@@ -5,7 +5,7 @@ import struct
 import zlib
 
 from django.conf import settings
-from django.utils import timezone
+from datetime import datetime, timezone
 
 from judge import event_poster as event
 from judge.judge_priority import BATCH_REJUDGE_PRIORITY, CONTEST_SUBMISSION_PRIORITY, DEFAULT_PRIORITY, REJUDGE_PRIORITY

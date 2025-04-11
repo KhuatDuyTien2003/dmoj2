@@ -4,7 +4,7 @@ from operator import attrgetter, itemgetter
 from django.db import migrations, models
 from django.db.models import Count, OuterRef, Subquery
 from django.db.models.functions import Coalesce
-from django.utils import timezone
+from datetime import datetime, timezone
 
 
 def tie_ranker(iterable, key=attrgetter('points')):

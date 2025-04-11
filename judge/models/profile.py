@@ -14,7 +14,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.db.models import F, Max, Q, UniqueConstraint
 from django.urls import reverse
-from django.utils import timezone
+from datetime import datetime, timezone
 from django.utils.encoding import force_bytes
 from django.utils.functional import cached_property
 from django.utils.timezone import now

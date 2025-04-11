@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.syndication.views import Feed
 from django.core.cache import cache
-from django.utils import timezone
+from datetime import datetime, timezone
 from django.utils.feedgenerator import Atom1Feed
 
 from judge.jinja2.markdown import markdown

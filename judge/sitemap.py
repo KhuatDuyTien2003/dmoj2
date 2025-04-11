@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from django.utils import timezone
+from datetime import datetime, timezone
 
 from judge.models import BlogPost, Contest, Organization, Problem, Solution
 

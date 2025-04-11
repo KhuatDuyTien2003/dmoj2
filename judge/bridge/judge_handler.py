@@ -8,7 +8,7 @@ from operator import itemgetter
 
 from django import db
 from django.conf import settings
-from django.utils import timezone
+from datetime import datetime, timezone
 
 from judge import event_poster as event
 from judge.bridge.base_handler import ZlibPacketHandler, proxy_list

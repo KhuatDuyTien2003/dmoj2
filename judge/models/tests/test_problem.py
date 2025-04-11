@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.test import SimpleTestCase, TestCase
-from django.utils import timezone
+from datetime import datetime, timezone
 
 from judge.models import Language, LanguageLimit, Problem, Submission
 from judge.models.problem import VotePermission, disallowed_characters_validator

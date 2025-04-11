@@ -9,7 +9,7 @@ from django.db.models.functions import Coalesce
 from django.forms import ModelForm
 from django.http import HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.utils import timezone
+from datetime import datetime, timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext as _
 from django.views.generic import View

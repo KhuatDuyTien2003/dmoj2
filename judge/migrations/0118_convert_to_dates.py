@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 from django.db.models import F
-from django.utils import timezone
+from datetime import datetime, timezone
 
 
 def convert_to_datetime(apps, schema_editor):

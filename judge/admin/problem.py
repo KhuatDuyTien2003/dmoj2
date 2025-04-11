@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.db import transaction
 from django.forms import ModelForm
 from django.urls import reverse, reverse_lazy
-from django.utils import timezone
+from datetime import datetime, timezone
 from django.utils.html import format_html
 from django.utils.translation import gettext, gettext_lazy as _, ngettext
 from reversion.admin import VersionAdmin

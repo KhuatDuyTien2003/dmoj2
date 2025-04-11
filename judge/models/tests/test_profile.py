@@ -4,7 +4,8 @@ import struct
 
 from django.conf import settings
 from django.test import TestCase
-from django.utils import timezone
+from datetime import datetime, timezone
+
 from django.utils.encoding import force_bytes
 
 from judge.models import Profile

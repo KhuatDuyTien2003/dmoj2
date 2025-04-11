@@ -10,7 +10,7 @@ from django.db import models
 from django.db.models import CASCADE, Exists, F, FilteredRelation, OuterRef, Q, SET_NULL
 from django.db.models.functions import Coalesce
 from django.urls import reverse
-from django.utils import timezone
+from datetime import datetime, timezone
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 

@@ -1,7 +1,8 @@
 from celery import shared_task
 from django.contrib.auth.models import User
 from django.core.cache import cache
-from django.utils import timezone
+from datetime import datetime, timezone
+
 from django.utils.translation import gettext as _
 
 from judge.models import Problem, Profile, Submission

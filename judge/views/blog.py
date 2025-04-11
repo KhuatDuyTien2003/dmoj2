@@ -2,7 +2,8 @@ from django.conf import settings
 from django.db.models import Count, Max
 from django.http import Http404
 from django.urls import reverse
-from django.utils import timezone
+from datetime import datetime, timezone
+
 from django.utils.translation import gettext as _
 from django.views.generic import ListView
 

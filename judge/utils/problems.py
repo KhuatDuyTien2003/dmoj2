@@ -4,7 +4,8 @@ from math import e
 from django.core.cache import cache
 from django.db.models import Case, Count, ExpressionWrapper, F, When
 from django.db.models.fields import FloatField
-from django.utils import timezone
+from datetime import datetime, timezone
+
 from django.utils.translation import gettext_noop
 
 from judge.models import Problem, Submission

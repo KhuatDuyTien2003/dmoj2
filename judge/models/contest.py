@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator, RegexVa
 from django.db import models, transaction
 from django.db.models import CASCADE, Q
 from django.urls import reverse
-from django.utils import timezone
+from datetime import datetime, timezone
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from jsonfield import JSONField
